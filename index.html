@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InovaCode - Soluções em Software Inovadoras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::selection {
+            background-color: #f39c12;
+            color: #fafafa;
+        }
+
+        :root {
+            --azul-primario: #1e6fbf;
+            --azul-secundario: #2980b9;
+            --laranja-primario: #f39c12;
+            --laranja-secundario: #e67e22;
+            --branco: #ffffff;
+            --cinza-claro: #f5f5f5;
+            --cinza-escuro: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--azul-primario);
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0px;
+        }
+
+        .container1 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0px;
+        }
+
+        .container2 {
+            text-align: center;
+            padding: 5%;
+
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilo geral do botão e do chat */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            background-color: transparent;
+            color: transparent;
+            border: none;
+            border-radius: 50%;
+            margin: 0px 50px 400px 0px;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            cursor: pointer;
+
+            transition: transform 0.2s;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            background-color: transparent;
+        }
+
+        .chatbot-box {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 280px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background-color: #1e6fbf;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chatbot-messages {
+            padding: 10px;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background-color: #1e6fbf;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .chatbot-input button:hover {
+            background-color: #0056b3;
+        }
+
+        .bot-message {
+            background-color: #f1f0f0;
+            border-radius: 10px;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            width: fit-content;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #1e6fbf;
+            color: white;
+            border-radius: 10px;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            margin-left: auto;
+            width: fit-content;
+            max-width: 80%;
+        }
+
+        .Mascote {
+            width: 10777px;
+
+        }
+
+        .botlindo {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .navbar1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50;
+            margin-right: 0px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--azul-primario);
+        }
+
+        .logo-text span {
+            color: var(--laranja-primario);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cinza-escuro);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--laranja-primario);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--laranja-primario);
+            color: var(--branco);
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn1 {
+            display: inline-block;
+            background-color: var(--laranja-primario);
+            color: var(--branco);
+            padding: 15px 50px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--laranja-secundario);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--laranja-primario);
+            color: var(--laranja-primario);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--laranja-primario);
+            color: var(--branco);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('anus.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--branco);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--branco);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 0;
+            background-color: var(--cinza-claro);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--laranja-primario);
+            margin-bottom: 20px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 10;
+            padding-top: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-grid1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .preçinho {
+            color: #f39c12;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--laranja-primario);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--laranja-primario);
+            color: var(--branco);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--laranja-primario);
+            margin: 20px 0;
+        }
+
+        .price1 {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--laranja-primario);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--laranja-primario);
+            position: absolute;
+            left: 0;
+        }
+
+        /* About */
+        .about {
+            padding: 80px 0;
+            background-color: var(--cinza-claro);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Team */
+        .team {
+            padding: 80px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .team-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .team-info p {
+            color: var(--laranja-primario);
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--cinza-claro);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul-primario);
+            color: var(--branco);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--branco);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--laranja-primario);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--branco);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--laranja-primario);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container1">
+            <div class="navbar1">
+                <div class="logo">
+                    <img src="Red Vintage Chicken Illustration Egg Farm Logo2.png" alt="Logo da InovaCode" />
+                    <div class="logo-text"><span></span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 id="sublinhado">Soluções de Software para o Futuro</h1>
+            <p>A InovaCode transforma suas ideias em realidade digital com soluções personalizadas e tecnologia de
+                ponta.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn">Nossos Planos</a>
+                <a href="#contact" class="btn btn-outline">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container do InovaBot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="openChat"><img src="Group 2.png" class="botlindo"></button>
+
+        <div class="chatbot-box" id="chatBox">
+            <div class="chatbot-header">🤖 InovaBot</div>
+            <div class="chatbot-messages" id="messages">
+                <div class="bot-message">Olá! 👋 Sou o InovaBot, seu assistente para te guiar por nosso site e responder suas dúvidas, o que gostaria de saber?</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+                <button id="sendBtn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções completas para impulsionar seu negócio</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Pacote 1 Desenvolvimento Básico</h3>
+                    <p>Ideal para pequenas empresas ou startups que precisam de um software simples para gerenciar suas
+                        operações.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Pacote 2 Desenvolvimento Sob Medida</h3>
+                    <p>Para clientes que têm necessidades específicas e desejam um serviço totalmente personalizado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Pacote 3 Manutenção e Suporte Contínuo</h3>
+                    <p>Para empresas que já possuem um software e precisam de manutenção e atualizações regulares.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Pacote 1 Design básico</h3>
+                    <p>Ideal para pequenas empresas ou startups que precisam de uma identidade visual inicial.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Pacote 2 Design Personalizado</h3>
+                    <p>Para clientes que têm necessidades específicas e desejam um serviço sob medida.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Pacote 3 Manutenção e Atualização de Design</h3>
+                    <p>Para empresas que já possuem uma identidade visual, mas precisam de atualizações regulares.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Planos</h2>
+                <p>Escolha o pacote ideal para o seu negócio</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Desenvolvimento Web</h3>
+                    <h2 class="preçinho">Pacote 1 Desenvolvimento Básico:</h2>
+                    <div class="price">R$999<span>/mês</span></div>
+                    <p>Ideal para pequenas empresas ou startups que precisam de um software simples para gerenciar suas
+                        operações.</p>
+                    <ul class="pricing-features">
+                        <li>Levantamento de requisitos.</li>
+                        <li>Desenvolvimento de uma aplicação web ou mobile </li>
+                        <li>Integração com banco de dados.</li>
+                        <li>Treinamento básico para usuários.</li>
+                        <li>Entrega: 4 semanas.</li>
+                    </ul>
+
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Design</h3>
+                    <h2 class="preçinho">Pacote 1 Design Básico:</h2>
+                    <div class="price">R$ 249<span>/mês</span></div>
+                    <p>Ideal para pequenas empresas ou startups que precisam de uma identidade visual inicial.</p>
+                    <ul class="pricing-features">
+                        <li>Criação de logotipo.</li>
+                        <li>Paleta de cores.</li>
+                        <li>Tipografia.</li>
+                        <li>Cartão de visita.</li>
+                        <li>Entrega: 5 dias úteis</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="section-title">
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h2 class="preçinho">Pacote 2 Desenvolvimento Sob Medida:</h2>
+                        <div class="price1">Preço a ser definido</div>
+                        <p>Para clientes que têm necessidades específicas e desejam um serviço totalmente personalizado.
+                        </p>
+
+                        <ul class="pricing-features">
+                            <li>Consultoria inicial para entender as necessidades do cliente.</li>
+                            <li>Desenvolvimento de um projeto de software totalmente personalizado.</li>
+                            <li>Revisões ilimitadas até a aprovação final</li>
+                            <li>Suporte técnico por 12 meses após a entrega.</li>
+                            <li>Entrega: A ser definido com o cliente</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="pricing-card">
+                        <h2 class="preçinho">Pacote 2 Design Personalizado:</h2>
+                        <div class="price1">Preço a ser definido</div>
+                        <p>Para clientes que têm necessidades específicas e desejam um serviço sob medida.</p>
+                        <ul class="pricing-features">
+                            <li>Consultoria inicial para entender as necessidades do cliente.</li>
+                            <li>Criação de um projeto de design totalmente personalizado.</li>
+                            <li>Revisões ilimitadas até a aprovação final.</li>
+                            <li>Entrega: A ser definido com o cliente.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="section-title">
+                    </div>
+                    <div class="pricing-grid1">
+                        <div class="pricing-card">
+                            <h2 class="preçinho">Pacote 3 Manutenção e Suporte Contínuo:</h2>
+                            <div class="price">R$2.999<span>/mês</span></div>
+                            <p>Para empresas que já possuem um software e precisam de manutenção e atualizações
+                                regulares.</p>
+                            <ul class="pricing-features">
+                                <li>Atualizações mensais de software.</li>
+                                <li>Suporte técnico contínuo.</li>
+                                <li>Implementação de novas funcionalidades conforme necessário.</li>
+                                <li>Entrega: Mensal.</li>
+                            </ul>
+
+                        </div>
+
+                        <div class="pricing-card">
+                            <h2 class="preçinho">Pacote 3 Manutenção e Atualização de Design:</h2>
+                            <div class="price">R$199<span>/mês</span></div>
+                            <p>Para empresas que já possuem uma identidade visual, mas precisam de atualizações
+                                regulares.</p>
+                            <ul class="pricing-features">
+                                <li>Atualizações mensais de materiais de marketing.</li>
+                                <li>Criação de novos templates para redes sociais.</li>
+                                <li>Revisões de design conforme necessário.</li>
+                                <li>Entrega: Mensal.</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="container2"><a href="#contact" class="btn1">Contratar</a></div>
+                </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a empresa que está revolucionando o desenvolvimento de software</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>InovaCode: Tecnologia com Propósito</h3>
+                    <p>Fundada em 2021 por um grupo de jovens empreendedores apaixonados por tecnologia, a InovaCode
+                        surgiu com a missão de simplificar a transformação digital para empresas de todos os portes.</p>
+                    <p>Com uma equipe altamente qualificada e abordagem moderna, combinamos expertise técnica com
+                        profundo entendimento de negócios para entregar soluções que realmente fazem a diferença.</p>
+                    <p>Acreditamos no poder da tecnologia para criar oportunidades e resolver problemas reais, sempre
+                        com foco na experiência do usuário e nos objetivos estratégicos de nossos clientes.</p>
+                    <div class="stats">
+                        <div style="margin-top: 30px;">
+                            <div style="font-size: 24px; font-weight: 700; color: var(--laranja-primario);">20+</div>
+                            <div>Projetos concluídos</div>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <div style="font-size: 24px; font-weight: 700; color: var(--laranja-primario);">90%</div>
+                            <div>Clientes satisfeitos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="cucu.jpeg"
+                        alt="Equipe jovem e diversificada da InovaCode trabalhando em um escritório moderno com computadores e quadros de planejamento" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso Time</h2>
+                <p>Conheça os talentos por trás das nossas soluções</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://placehold.co/400x400"
+                        alt="Foto de Ana Silva, CEO da InovaCode - Mulher jovem de cabelos escuros sorrindo com confiança"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>Julyana Cavadas</h4>
+                        <p>Diretora</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/400x400"
+                        alt="Foto de Carlos Mendes, CTO - Homem jovem usando óculos e camisa social em frente a várias telas de computador"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>Natália Barbosa</h4>
+                        <p>Vice Diretora e diretora de Design</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/400x400"
+                        alt="Foto de Mariana Costa, Designer Chefe - Mulher criativa com cabelo colorido em um ambiente de trabalho descontraído"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>Lucas Oliveira</h4>
+                        <p>Diretor de Desenvolvimento</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/400x400"
+                        alt="Foto de Rafael Oliveira, Dev Sênior - Engenheiro de software concentrado enquanto programa em um notebook moderno"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>Alexsandro Reis</h4>
+                        <p>Analista de Sistema</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://placehold.co/400x400"
+                        alt="Foto de Rafael Oliveira, Dev Sênior - Engenheiro de software concentrado enquanto programa em um notebook moderno"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>Miguel Juvenato</h4>
+                        <p>Ajudante de Design e desenvolvimento</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="ChatGPT Image 23 de out. de 2025, 16_35_08.png"
+                        alt="Foto de Rafael Oliveira, Dev Sênior - Engenheiro de software concentrado enquanto programa em um notebook moderno"
+                        class="team-image" />
+                    <div class="team-info">
+                        <h4>InovaBot</h4>
+                        <p>Mascote e melhor funcionário</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para transformar sua ideia em realidade</p>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Serviço de Interesse</label>
+                        <select id="service" name="service" class="form-group input">
+                            <option value="">Selecione um serviço</option>
+                            <option value="web">Desenvolvimento Básico</option>
+                            <option value="mobile">Desenvolvimento Sob Medida</option>
+                            <option value="cloud"> Manutenção e Suporte Contínuo</option>
+                            <option value="bi">Design básico</option>
+                            <option value="security">Design Personalizado</option>
+                            <option value="support">Manutenção e Atualização de Design</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>INOVACODE</h3>
+                    <p>Transformando ideias em soluções digitais que impulsionam negócios e melhoram vidas.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="https://www.youtube.com/channel/UCC9Jqcxe7wSRpR0A2JK0H-A"><img
+                                src="icons8-youtube-24.png" alt=""></a>
+                        <a href="https://x.com/InovaCodeSoft"><img src="icons8-x-24.png" alt=""></a>
+                        <a href="https://www.instagram.com/inova_code_soft/?next=%2F"><img
+                                src="icons8-instagram-logo-24.png" alt=""></a>
+                        <a href="https://www.facebook.com/profile.php?id=61581764025660"><img
+                                src="icons8-facebook-novo-24.png" alt=""></a>
+                        <a href="https://www.linkedin.com/in/inova-code-0a8b60389/"><img src="icons8-linkedin-24.png"
+                                alt=""></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3></h3>
+
+                </div>
+                <div class="footer-column">
+                    <h3>LINKS ÚTEIS</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>CONTATO</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Delfim Moreira 952, Leblon - Rio de Janeiro/RJ
+                        </li>
+                        <li><i class="fas fa-phone"></i> (21) 989306200</li>
+                        <li><i class="fas fa-envelope"></i> Inovacode.soft@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 6h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2021 InovaCode. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header on scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Simulate form submission
+                alert('Obrigado por sua mensagem! Entraremos em contato em breve.');
+                form.reset();
+            });
+        }
+
+        // Services animation
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Change navbar background on scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = '#fff';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        const openChat = document.getElementById("openChat");
+        const chatBox = document.getElementById("chatBox");
+        const sendBtn = document.getElementById("sendBtn");
+        const userInput = document.getElementById("userInput");
+        const messages = document.getElementById("messages");
+
+        openChat.addEventListener("click", () => {
+            chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
+        });
+
+        sendBtn.addEventListener("click", sendMessage);
+        userInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        function gerarResposta(texto) {
+            const t = texto.toLowerCase();
+
+            // Saudações simples
+            if (t.includes("cuzinho") || t.includes("cu") || t.includes("cuzão")) return "gosto";
+
+            
+
+            // Saudações com gírias e variações
+            const saudacoes = [
+
+                "ola",
+                "olá",
+                "oi",
+                "hello",
+                "saudação",
+                "saudacão",
+                "saudaçao",
+                "saudacao",
+                "e aí",
+                "eae",
+                "fala",
+                "fala aí",
+                "fala ai",
+                "opa",
+                "salve",
+                "suave",
+                "beleza",
+                "firmeza",
+                "tranquilo",
+                "de boa",
+                "yo",
+                "hey",
+                "hi",
+                "saudações",
+                "saudaçoes",
+                "saudacões",
+                "saudacoes",
+
+            ];
+
+            if (saudacoes.some(s => t.includes(s))) return "opa, prazer meu nome é InovaBot, estou aqui para te guiar pelo nosso site e responder as suas perguntas";
+
+            // Respostas padrão se não reconhecer nada
+            const respostasPadrao = [
+                "Não entendi, quer saber sobre nossos preços e serviços?",
+                "Pode repetir? Não peguei direito."
+            ];
+
+            return respostasPadrao[Math.floor(Math.random() * respostasPadrao.length)];
+        }
+
+
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if (text === "") return;
+
+            const userMsg = document.createElement("div");
+            userMsg.classList.add("user-message");
+            userMsg.textContent = text;
+            messages.appendChild(userMsg);
+            userInput.value = "";
+
+            const resposta = gerarResposta(text);
+
+            setTimeout(() => {
+                const botMsg = document.createElement("div");
+                botMsg.classList.add("bot-message");
+                botMsg.textContent = resposta;
+                messages.appendChild(botMsg);
+                messages.scrollTop = messages.scrollHeight;
+            }, 600);
+        }
+    </script>
+</body>
+
+</html>
